@@ -1,0 +1,169 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+body {
+  overflow: hidden;
+  margin: 0;
+  padding-bottom: 3rem;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+    Arial, sans-serif;
+}
+.message-container {
+  width: 74%;
+  position: relative;
+  background-color: #e2e8f0;
+}
+
+#messages {
+  height: calc(100%);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  padding: 0.7vw 1vw;
+  width: 20vw;
+}
+#messages li {
+  list-style: none;
+  padding: 0 1rem;
+  margin-bottom: 10px;
+  color: white;
+  border: solid 1px #020617;
+  border-radius: 5px;
+  width: fit-content;
+}
+.sender-inf {
+  font-weight: 600;
+  color: #c7d2fe;
+}
+.reciever-inf {
+  font-weight: 600;
+  color: #f9a8d4;
+}
+.text-message {
+  padding: 0.2rem 0;
+}
+.recieve-message {
+  background-color: #082f49;
+}
+.send-message {
+  background-color: #075985;
+}
+#form {
+  width: 90%;
+  margin-left: 5%;
+  border-radius: 3px;
+  display: flex;
+  position: absolute;
+  bottom: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}
+#input {
+  border: 2px solid #4c0519 !important;
+  width: 80%;
+  height: 2.5rem;
+  color: #030712;
+  font-size: 1.2rem;
+  padding-left: 0.5rem;
+  border-radius: 9px;
+}
+#input:focus {
+  border: none;
+  outline: none;
+}
+#submit {
+  border: none;
+  position: fixed;
+  right: 11%;
+  cursor: pointer;
+}
+.container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.namespaces {
+  width: 6%;
+  height: 100%;
+  background-color: #0f172a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5px 0;
+}
+.rooms {
+  width: 20%;
+  height: 100%;
+  background-color: #020617;
+}
+
+.all-top {
+  display: flex;
+  padding: 0.7vw 1vw;
+  color: #94a3b8;
+  justify-content: space-between;
+}
+.all-number,
+.add-room {
+  display: flex;
+  margin-top: 8px;
+}
+.all-title-number {
+  display: flex;
+  gap: 0.7vw;
+}
+.add-room {
+  cursor: pointer;
+}
+.slate-color {
+  color: #020617 !important;
+}
+.rooms-list {
+  color: #94a3b8;
+}
+.rooms-list li {
+  list-style: none;
+  padding: 0.1vw 1vw;
+  font-weight: 600;
+  cursor: pointer;
+}
+.search-bar {
+  margin-top: 8px;
+}
+#input-search {
+  border-radius: 3px;
+  padding: 0.5vw;
+  border: 2px solid #4c0519 !important;
+}
+.sign-up-btn {
+  color: white;
+  background-color: #16a34a;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+}
+.sign-up-btn:hover {
+  background-color: white;
+  color: #16a34a;
+}
+.d-none {
+  display: none;
+}
+.namespaces div {
+  margin: 5px 0;
+  cursor: pointer;
+}
+span {
+  margin-left: 0.5rem;
+  color: #e2e8f0;
+  font-size: 0.8rem;
+}

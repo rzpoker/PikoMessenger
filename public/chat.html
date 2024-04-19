@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <section class="container">
+      <section class="namespaces">
+
+      </section>
+
+
+      <section class="rooms">
+        <div class="all-top ns-info d-none">
+          <div class="all-title-number">
+          <h2 class="all-title namespace-title"><!--ns title with js--></h2>
+          <div class="all-number">
+            <i  class="bi bi-hash"></i>
+            <h6  class="rooms-number" style="margin-top: 4px !important;"><!--ns room number with js--></h6>
+          </div>
+        </div>
+          <div class="add-room"> 
+            <i class="bi bi-plus-lg"></i>
+          </div>
+        </div>
+        <ul class="rooms-list"> 
+        </ul>
+      </section>
+
+
+      <section class="message-container ">
+        <div class="all-top top-sign d-none">
+          <div class="all-title-number slate-color">
+          <h2 class="all-title room-title"><!--room title with js--></h2>
+          <div class="all-number">
+            <i  class="bi bi-person-fill"></i>
+            <h6  class = "curr-room-members" style="margin-top: 4px !important;"><!--update members with js--></h6>
+          </div>
+        </div>
+        <div class="search-bar"> 
+          <form id="search-form" action="">
+            <input
+              id="input-search"
+              autocomplete="off"
+              placeholder="search..."/>
+          </form>
+        </div>
+        </div>
+        <div>
+        </div>
+
+        <ul id="messages">
+
+          <!-- <li class="send-message">
+            <p class="sender-inf">my name</p>
+            <p class="text-message">i have something to send</p>
+
+          </li>
+          <li class="recieve-message">
+            <p class="sender-inf">my name</p>
+            <p class="text-message">lorem</p> -->
+
+          </li>
+
+        </ul>
+
+        <form id="form" action="">
+          <input
+            id="input"
+            autocomplete="off"
+            placeholder="say something..."
+          >
+          <i id="submit" style= "color: #4c0519; font-size: 1.3rem;" class="bi bi-send-fill"></i></input>
+        </form>
+      </section>
+    </section>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="scripts.js" type="text/javascript"></script>
+    <script src="joinNs.js" type="text/javascript"></script>
+    <script src="joinRoom.js" type="text/javascript"></script>
+  </body>
+</html>
