@@ -1,3 +1,4 @@
+//create a class for Namespaces
 class Namespace {
   constructor(id, nsTitle, img, endpoint) {
     this.id = id;
@@ -7,9 +8,11 @@ class Namespace {
     this.rooms = [];
   }
 
+  //function for add rooms to namespaces
   addRoom(roomObj) {
     this.rooms.push(roomObj);
   }
 }
 
+//export Namespace module
 module.exports = Namespace;

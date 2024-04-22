@@ -1,15 +1,21 @@
+//prompt for get username
 const username = prompt("what is your username?");
 
+//create new Socket
 const socket = io("http://localhost:3000", {
   query: {
     username: username,
   },
 });
+
 let nsSocket = "";
+
 const namespacesDom = document.querySelector(".namespaces");
 const form = document.querySelector("#form");
 const messages = document.querySelector("#messages");
+const messagesBox = document.querySelector(".message-box");
 const input = document.querySelector("#input");
+const submit = document.querySelector("#submit");
 const signUpBtn = document.querySelector(".sign-up-btn");
 const messageContainer = document.querySelector(".message-container");
 const msgTop = document.querySelector(".top-sign");

@@ -5,29 +5,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Document</title>
+    <title>PikoMessenger</title>
   </head>
   <body>
+    <!--Container-->
     <section class="container">
+
       <section class="namespaces">
-
+        <!--shows list of namespaces with js-->
       </section>
-
 
       <section class="rooms">
         <div class="all-top ns-info d-none">
           <div class="all-title-number">
-          <h2 class="all-title namespace-title"><!--ns title with js--></h2>
+          <h2 class="all-title namespace-title"><!--room list with js--></h2>
           <div class="all-number">
-            <i  class="bi bi-hash"></i>
-            <h6  class="rooms-number" style="margin-top: 4px !important;"><!--ns room number with js--></h6>
+            <i class="bi bi-hash"></i>
+            <h6 class="rooms-number" style="margin-top: 4px !important;"><!--ns room number with js--></h6>
           </div>
         </div>
+
+        <!--Add room button-->
           <div class="add-room"> 
             <i class="bi bi-plus-lg add-room-button"></i>
           </div>
+
         </div>
-        <ul class="rooms-list"> 
+        <ul class="rooms-list">
+          <!--rooms list with js--> 
         </ul>
       </section>
 
@@ -37,10 +42,12 @@
           <div class="all-title-number slate-color">
           <h2 class="all-title room-title"><!--room title with js--></h2>
           <div class="all-number">
-            <i  class="bi bi-person-fill"></i>
-            <h6  class = "curr-room-members" style="margin-top: 4px !important;"><!--update members with js--></h6>
+            <i class="bi bi-person-fill"></i>
+            <h6 class ="curr-room-members"><!--update members with js--></h6>
           </div>
         </div>
+        
+        <!--Search box-->
         <div class="search-bar"> 
           <form id="search-form" action="">
             <input
@@ -50,25 +57,14 @@
           </form>
         </div>
         </div>
-        <div>
-        </div>
 
+      <section class="message-box">
         <ul id="messages">
-
-          <!-- <li class="send-message">
-            <p class="sender-inf">my name</p>
-            <p class="text-message">i have something to send</p>
-
-          </li>
-          <li class="recieve-message">
-            <p class="sender-inf">my name</p>
-            <p class="text-message">lorem</p> -->
-
-          </li>
-
+          <!--we use this section for show messages-->
         </ul>
-
-        <form id="form" action="">
+      </section>
+          <!--input box-->
+        <form id="form" >
           <input
             id="input"
             autocomplete="off"

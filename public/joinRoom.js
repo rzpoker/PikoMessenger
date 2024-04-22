@@ -1,17 +1,16 @@
 function joinRoom(roomName) {
+  //show room name and options
   document.querySelector(".top-sign").classList.remove("d-none");
   let roomTitle = document.querySelector(".room-title");
   roomTitle.innerHTML = "";
   roomTitle.innerHTML = roomName;
-  //sned this room name to server
+
+  //send this room name to server
   nsSocket.emit("joinRoom", roomName, (newNumberOfMembers) => {
-    //we want to update room members number
-    // document.querySelector(
-    //   ".curr-room-members"
-    // ).innerHTML = `${newNumberOfMembers}`;
-    ////
+    //Nothing
   });
 
+  //load list of messages in history
   nsSocket.on("historyCatchUp", (history) => {
     messages.innerHTML = "";
     history.forEach((msg) => {
@@ -26,14 +25,17 @@ function joinRoom(roomName) {
       const currMessages = messages.innerHTML;
       messages.innerHTML = currMessages + newMsg;
     });
+
     //go to bottom of messages
-    messages.scrollTo(0, messages.scrollHeight);
+    messagesBox.scrollTo(0, messagesBox.scrollHeight);
   });
+
   //send back the number of users joined the room to all users
   nsSocket.on("updateMembers", (number) => {
     document.querySelector(".curr-room-members").innerHTML = `${number}`;
   });
 
+  //search for messages
   let searchForm = document.querySelector("#search-form");
   searchForm.addEventListener("input", (e) => {
     let messages = document.querySelectorAll(".text-message");

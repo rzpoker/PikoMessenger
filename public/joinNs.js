@@ -1,6 +1,11 @@
 function joinNs(endpoint) {
   const addRoomButton = document.querySelector(".add-room");
+
+  //eventlistener for input box
   form.addEventListener("submit", formsub);
+  submit.addEventListener("click", formsub);
+
+  //function for submit messages
   function formsub(e) {
     e.preventDefault();
     const newMessage = input.value;
@@ -8,27 +13,36 @@ function joinNs(endpoint) {
 
     nsSocket.emit("newMessageToServer", { text: newMessage });
   }
+
+  //function for addRoom to current namespace
   function addRoom() {
     const roomName = prompt("Enter the room name:");
     nsSocket.emit("addRoomToNamespace", { roomName });
   }
+
+  //eventlistener for addRoom to namespace on click
   addRoomButton.addEventListener("click", addRoom);
+
+  //check if there is already a socket
   if (nsSocket) {
-    //check if nsSocket is actually a socket
+    //close current socket so we can create a new socket
     nsSocket.close();
 
     //remove event listener before it added again
     form.removeEventListener("submit", formsub);
+    submit.removeEventListener("click", formsub);
     addRoomButton.removeEventListener("click", addRoom);
   }
 
-  //set default namespace
+  //set default namespace, create a new socket
   nsSocket = io(`http://localhost:3000${endpoint}`, {
+    //add username to handshake
     query: {
       username: username,
     },
   });
 
+  //load rooms
   nsSocket.on("nsRoomLoad", (rooms) => {
     document.querySelector(".ns-info").classList.remove("d-none");
 
@@ -40,14 +54,11 @@ function joinNs(endpoint) {
     let roomsList = document.querySelector(".rooms-list");
     roomsList.innerHTML = "";
     rooms.forEach((room) => {
-      let icon;
-      if (room.privateRoom) {
-        icon = `shield-lock-fill `;
-      } else {
-        icon = `hash `;
-      }
-      roomsList.innerHTML += `<li class = "eachRoom"><i class="bi bi-${icon}"></i>  ${room.title}</li>`;
+      roomsList.innerHTML += `<li class = "eachRoom"><i class="bi bi-${
+        room.privateRoom ? `shield-lock-fill` : `hash `
+      }"></i>  ${room.title}</li>`;
     });
+
     //add click listener to each room
     let roomNodes = document.querySelectorAll(".eachRoom");
     roomNodes.forEach((elem) => {
@@ -61,6 +72,8 @@ function joinNs(endpoint) {
     const topRoomName = topRoom.innerText;
     joinRoom(topRoomName);
   });
+
+  //send new message to all clients
   nsSocket.on("messageToClients", (msg) => {
     messages.innerHTML += `<li class="${
       nsSocket.io.opts.query.username === msg.username ? "send" : "recieve"
@@ -70,5 +83,6 @@ function joinNs(endpoint) {
     }</span></p>
   <p class="text-message">${msg.text}</p>
   `;
+    messagesBox.scrollTo(0, messagesBox.scrollHeight);
   });
 }
