@@ -1,4 +1,5 @@
 function joinNs(endpoint) {
+  const addRoomButton = document.querySelector(".add-room");
   form.addEventListener("submit", formsub);
   function formsub(e) {
     e.preventDefault();
@@ -7,26 +8,27 @@ function joinNs(endpoint) {
 
     nsSocket.emit("newMessageToServer", { text: newMessage });
   }
-  let query = "";
+  function addRoom() {
+    const roomName = prompt("Enter the room name:");
+    nsSocket.emit("addRoomToNamespace", { roomName });
+  }
+  addRoomButton.addEventListener("click", addRoom);
   if (nsSocket) {
-    query = nsSocket.io.opts.query;
-
     //check if nsSocket is actually a socket
     nsSocket.close();
 
     //remove event listener before it added again
     form.removeEventListener("submit", formsub);
+    addRoomButton.removeEventListener("click", addRoom);
   }
 
   //set default namespace
   nsSocket = io(`http://localhost:3000${endpoint}`, {
     query: {
-      username: query === "" ? username : query.username,
+      username: username,
     },
   });
-  if (query != "") {
-    nsSocket.io.opts.query = query;
-  }
+
   nsSocket.on("nsRoomLoad", (rooms) => {
     document.querySelector(".ns-info").classList.remove("d-none");
 

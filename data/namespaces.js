@@ -19,20 +19,22 @@ const linuxNs = new Namespace(
   "https://upload.wikimedia.org/wikipedia/commons/a/af/Tux.png",
   "/linux"
 );
+const GenId = () => {
+  return +`${Math.random()}`.slice(4);
+};
+wikiNs.addRoom(new Room(GenId(), "New Articles", 0, true));
+wikiNs.addRoom(new Room(GenId(), "Editors", 0));
+wikiNs.addRoom(new Room(GenId(), "Other", 0));
 
-wikiNs.addRoom(new Room(0, "New Articles", 0, true));
-wikiNs.addRoom(new Room(1, "Editors", 0));
-wikiNs.addRoom(new Room(2, "Other", 0));
+mozNs.addRoom(new Room(GenId(), "Firefox", 1));
+mozNs.addRoom(new Room(GenId(), "SeaMonkey", 1));
+mozNs.addRoom(new Room(GenId(), "SpiderMonkey", 1));
+mozNs.addRoom(new Room(GenId(), "Rust", 1));
 
-mozNs.addRoom(new Room(0, "Firefox", 1));
-mozNs.addRoom(new Room(1, "SeaMonkey", 1));
-mozNs.addRoom(new Room(2, "SpiderMonkey", 1));
-mozNs.addRoom(new Room(3, "Rust", 1));
-
-linuxNs.addRoom(new Room(0, "Debian", 2));
-linuxNs.addRoom(new Room(1, "Red Hat", 2));
-linuxNs.addRoom(new Room(2, "Ubuntu", 2));
-linuxNs.addRoom(new Room(3, "Mac OS", 2));
+linuxNs.addRoom(new Room(GenId(), "Debian", 2));
+linuxNs.addRoom(new Room(GenId(), "Red Hat", 2));
+linuxNs.addRoom(new Room(GenId(), "Ubuntu", 2));
+linuxNs.addRoom(new Room(GenId(), "Mac OS", 2));
 
 const namespaces = [wikiNs, mozNs, linuxNs];
 

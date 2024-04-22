@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const socketio = require("socket.io");
+const Room = require("./classes/Rooms");
 
 const namespaces = require("./data/namespaces");
 
@@ -40,6 +41,7 @@ namespaces.forEach((namespace) => {
         return room.title === roomTrim;
       });
       updateUsersInRoom(namespace, room);
+
       nsSocket.emit("historyCatchUp", nsRoom.history);
     });
 
@@ -61,6 +63,18 @@ namespaces.forEach((namespace) => {
 
       nsRoom.addmessage(fullMsg);
       io.of(namespace.endpoint).to(roomTitle).emit("messageToClients", fullMsg);
+    });
+    nsSocket.on("addRoomToNamespace", (roomName) => {
+      console.log(nsSocket.nsp.name);
+      const roomId = +`${Math.random()}`.slice(4);
+      console.log(roomName.roomName);
+      namespaces.forEach((el) => {
+        if (el.endpoint === nsSocket.nsp.name) {
+          el.addRoom(new Room(roomId, roomName.roomName, el.id));
+          nsSocket.emit("nsRoomLoad", namespace.rooms);
+          console.log(el);
+        }
+      });
     });
   });
 });
